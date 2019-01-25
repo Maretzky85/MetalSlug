@@ -1,5 +1,6 @@
 package com.sikoramarek;
 
+import com.sikoramarek.controller.Controller;
 import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Parent;
@@ -12,16 +13,9 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-
-        Image background = new Image("bg/lvl1Bg.png");
-        ImageView imageView = new ImageView(background);
-
-        Parent root = new Group(imageView);
-        primaryStage.setTitle("Metal Slug");
-        primaryStage.setScene(new Scene(root, 300, 275));
-
-
-        primaryStage.show();
+        Controller controller = new Controller();
+        controller.controllerInit(primaryStage);
+        controller.startLoop();
     }
 
 
