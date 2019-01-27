@@ -14,13 +14,14 @@ public class Controller implements Observer {
     public void controllerInit(Stage primaryStage){
 
         loop = new FrameControlLoop(this::updateModel);
+        loop.setDaemon(true);
         view = new JavaFXview(primaryStage);
         view.viewInit();
 
     }
 
     public void updateModel(){
-
+        view.update();
     }
 
     @Override

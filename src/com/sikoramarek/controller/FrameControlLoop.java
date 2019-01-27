@@ -41,9 +41,9 @@ public class FrameControlLoop extends Thread {
             initialTime = currentTime;
 
             if (timeCounterMs >= timeFrame) {
-                if (!isPause) {
+//                if (!isPause) {
                     updater.run();
-                }
+//                }
 
 //                if (CONSOLE_VIEW) {
 //                    System.out.println("Frame: " + frame);
@@ -62,6 +62,7 @@ public class FrameControlLoop extends Thread {
 
             //FPS loging in ======================
             if (currentTime - startTime > 1000) {
+                System.out.println("FPS: " + FPS);
 //                statTimer.run();
                 startTime = System.currentTimeMillis();
                 FPS = tics;
