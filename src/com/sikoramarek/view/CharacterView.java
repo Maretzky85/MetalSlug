@@ -1,5 +1,7 @@
 package com.sikoramarek.view;
 
+import com.sikoramarek.common.PlayerAction;
+import com.sikoramarek.common.ResourceLoader;
 import com.sikoramarek.model.CharacterModel;
 import javafx.scene.Group;
 
@@ -18,11 +20,11 @@ public class CharacterView{
     public SkinManager legs;
 
     public void loadSkins(){
+        legs.loadSkinMap(PlayerAction.RUNNING, "Eri/Body/Running/legs");
+        legs.loadSkinMap(PlayerAction.STANDING, "Eri/Body/Standing/Legs");
 
-        legs.loadSkins(new String[]{"Eri/Body/Standing/eri-stand-legs-01.png"});
-
-        body.loadSkins(new String[]{"Eri/Body/Standing/eri-stand-01.png", "Eri/Body/Standing/eri-stand-02.png",
-                "Eri/Body/Standing/eri-stand-03.png", "Eri/Body/Standing/eri-stand-04.png"});
+        body.loadSkinMap(PlayerAction.STANDING, "Eri/Body/Standing/Body");
+        body.loadSkinMap(PlayerAction.RUNNING,"Eri/Body/Running/body");
 
         legs.offset = 15;
         scene.getChildren().add(legs);

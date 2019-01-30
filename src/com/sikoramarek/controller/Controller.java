@@ -32,10 +32,12 @@ public class Controller implements Observer {
         String key = (String) arg;
         switch (key) {
             case "d":
-                player1.x_pos += 5;
+                player1.setX_pos(player1.getX_pos()+5);
+//                player1.x_pos += 5;
                 break;
             case "a":
-                player1.x_pos -= 5;
+                player1.setX_pos(player1.getX_pos()-5);
+//                player1.x_pos -= 5;
                 break;
         }
     }

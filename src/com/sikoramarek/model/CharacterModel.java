@@ -16,7 +16,22 @@ public class CharacterModel {
     public String skin_type;
 
     public CharacterModel(int x_pos, int y_pos){
+        action = PlayerAction.STANDING;
         this.x_pos = x_pos;
+        this.y_pos = y_pos;
+    }
+
+    public void setX_pos(int x_pos){
+        if(x_pos != this.x_pos){
+            action = PlayerAction.RUNNING;
+        }else {
+            action = PlayerAction.STANDING;
+        }
+
+        this.x_pos = x_pos;
+    }
+
+    public void setY_pos(int y_pos){
         this.y_pos = y_pos;
     }
 

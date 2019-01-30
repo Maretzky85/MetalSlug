@@ -17,10 +17,10 @@ public class Player {
     public int y_pos = 160;
 
     public Player(){
-        skins.add("Eri/Body/Standing/eri-stand-01.png");
-        skins.add("Eri/Body/Standing/eri-stand-02.png");
-        skins.add("Eri/Body/Standing/eri-stand-03.png");
-        skins.add("Eri/Body/Standing/eri-stand-04.png");
+        skins.add("Eri/Body/Standing/Body/eri-stand-01.png");
+        skins.add("Eri/Body/Standing/Body/eri-stand-02.png");
+        skins.add("Eri/Body/Standing/Body/eri-stand-03.png");
+        skins.add("Eri/Body/Standing/Body/eri-stand-04.png");
         skinView = new ImageView(new Image(skins.get(currentSkin)));
         skinView.setX(x_pos);
         skinView.setY(y_pos);
