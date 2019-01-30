@@ -1,12 +1,17 @@
 package com.sikoramarek.model;
 
+import com.sikoramarek.common.CharacterType;
+import com.sikoramarek.common.PlayerAction;
+
 public class CharacterModel {
 
     public int x_pos;
 
     public int y_pos;
 
-    public String type;
+    public PlayerAction action;
+
+    public CharacterType type;
 
     public String skin_type;
 

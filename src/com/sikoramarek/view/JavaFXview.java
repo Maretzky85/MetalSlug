@@ -6,7 +6,6 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -40,15 +39,6 @@ public class JavaFXview {
 
     private void attachKeyboardHandler(){
         primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> inputHandler.handleInput(key));
-    }
-
-    private void handleKey(KeyEvent key) {
-//        if (key.getCode() == KeyCode.D){
-//            player.setX(player.getX() + 5);
-//        }
-//        if (key.getCode() == KeyCode.A){
-//            player.setX(player.getX() - 5);
-//        }
     }
 
     public void attachObserver(Controller controller){
