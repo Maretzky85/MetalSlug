@@ -1,5 +1,7 @@
 package com.sikoramarek.controller;
 
+import com.sikoramarek.common.SharedResources;
+
 /**
  * This class is for controlling how many frames is generated for second
  * This is clock for theoretical model, that run selected functions in requested frequency
@@ -22,10 +24,12 @@ public class FrameControlLoop extends Thread {
     private long timeCounterMs = 0; //milliseconds counter
     private int FPS = 0;
     private int frame = 0;
+    private long lastdeltatime;
 
 
     FrameControlLoop(Runnable updater) {
         this.updater = updater;
+        this.lastdeltatime = System.currentTimeMillis();
     }
 
     /**
@@ -42,6 +46,8 @@ public class FrameControlLoop extends Thread {
 
             if (timeCounterMs >= timeFrame) {
 //                if (!isPause) {
+                    SharedResources.DT = System.currentTimeMillis() - lastdeltatime;
+                    lastdeltatime = System.currentTimeMillis();
                     updater.run();
 //                }
 

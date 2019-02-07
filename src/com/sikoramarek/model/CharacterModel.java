@@ -5,6 +5,8 @@ import com.sikoramarek.common.PlayerAction;
 
 public class CharacterModel {
 
+    private int VELOCITY = 10;
+
     public int x_pos;
 
     public int y_pos;
