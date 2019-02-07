@@ -13,8 +13,6 @@ import javafx.stage.Stage;
 
 public class JavaFXview {
 
-    private InputHandler inputHandler = new InputHandler();
-
     private CharacterView player1;
 
     private Stage primaryStage;
