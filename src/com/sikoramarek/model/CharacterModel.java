@@ -56,7 +56,7 @@ public class CharacterModel {
             Y_VELOCITY -= 5;
         }else {
             Y_VELOCITY = 0;
-            if (SharedResources.Keyboard.contains(KeyCode.SPACE)){
+            if (SharedResources.Keyboard.contains(KeyCode.W)){
                 Y_VELOCITY += 30;
             }
         }
