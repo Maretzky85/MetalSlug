@@ -45,10 +45,15 @@ public class SkinManager extends ImageView {
         this.setX(model.getX_pos());
         this.setY(model.getY_pos()+offset);
         skins = skinMap.get(model.action);
+
         if (currentSkin < skins.size() - 1){
             currentSkin += 1;
+        }else if(model.action == PlayerAction.RUNNING) {
+            currentSkin = 5;
         }else{
-            currentSkin = 0;}
+            currentSkin = 0;
+        }
+
         currentImage = skins.get(currentSkin);
         this.setImage(currentImage);
     }
