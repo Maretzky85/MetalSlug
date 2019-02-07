@@ -2,7 +2,9 @@ package com.sikoramarek.view;
 
 import com.sikoramarek.common.PlayerAction;
 import com.sikoramarek.common.ResourceLoader;
+import com.sikoramarek.common.SharedResources;
 import com.sikoramarek.model.CharacterModel;
+import javafx.application.Platform;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -14,6 +16,9 @@ public class SkinManager extends ImageView {
     public SkinManager(CharacterModel model){
         this.model = model;
     }
+
+    private float delta = 0;
+
 
     private CharacterModel model;
 
@@ -49,16 +54,33 @@ public class SkinManager extends ImageView {
         this.setY(model.y_pos+offset);
         skins = skinMap.get(model.action);
 
-        if (currentSkin < skins.size() - 1){
-            currentSkin += 1;
-        }else if(model.action == PlayerAction.RUNNING) {
-            currentSkin = 5;
+        if(this.offset > 0){
+            if(delta > 0.3) {
+                delta = 0;
+                updateSkin();
+            }else{
+                delta += SharedResources.DT;
+            }
+        }else
+        if(delta > 1) {
+            delta = 0;
+            updateSkin();
         }else{
+            delta += SharedResources.DT;
+        }
+    }
+
+    private void updateSkin() {
+        if (currentSkin < skins.size() - 1) {
+            currentSkin += 1;
+        } else if (model.action == PlayerAction.RUNNING) {
+            currentSkin = 5;
+        } else {
             currentSkin = 0;
         }
-
         currentImage = skins.get(currentSkin);
-        this.setImage(currentImage);
+        Platform.runLater(() -> {this.setImage(currentImage);});
+
     }
 
 }

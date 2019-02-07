@@ -2,7 +2,9 @@ package com.sikoramarek.view;
 
 import com.sikoramarek.common.SharedResources;
 import com.sikoramarek.controller.Controller;
+import com.sikoramarek.model.Bullet;
 import com.sikoramarek.model.CharacterModel;
+import javafx.application.Platform;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
@@ -10,6 +12,8 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class JavaFXview {
 
@@ -56,6 +60,17 @@ public class JavaFXview {
 
 
     public void update() {
+        root.getChildren().forEach((object) -> {
+            if (object.getClass().equals(Bullet.class)){
+                Bullet bullet = (Bullet) object;
+                if (!bullet.alive){
+                    Platform.runLater(() -> {
+                        root.getChildren().remove(object);
+                    });
+
+                }
+            }
+        });
         player1.update();
     }
 }

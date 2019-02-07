@@ -11,7 +11,7 @@ public class Controller{
 
     private FrameControlLoop loop;
     private JavaFXview view;
-    private CharacterModel player1 = new CharacterModel(50, 160);
+    private CharacterModel player1 = new CharacterModel(50, 0);
 
     public void controllerInit(Stage primaryStage){
 
@@ -19,7 +19,6 @@ public class Controller{
         loop.setDaemon(true);
         view = new JavaFXview(primaryStage);
         view.viewInit();
-//        view.attachObserver(this);
         view.createPlayer(player1);
     }
 
@@ -27,23 +26,6 @@ public class Controller{
         player1.update();
         view.update();
     }
-
-//    @Override
-//    public void update(Observable o, Object arg) {
-//        String key = (String) arg;
-//        switch (key) {
-//            case "d":
-//                player1.orientation = 1;
-//                player1.setX_pos(player1.getX_pos()+5);
-////                player1.x_pos += 5;
-//                break;
-//            case "a":
-//                player1.orientation = -1;
-//                player1.setX_pos(player1.getX_pos()-5);
-////                player1.x_pos -= 5;
-//                break;
-//        }
-//    }
 
     public void startLoop() {
         loop.start();

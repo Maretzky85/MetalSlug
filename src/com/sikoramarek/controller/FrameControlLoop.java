@@ -20,7 +20,7 @@ public class FrameControlLoop extends Thread {
 
     private long initialTime = System.currentTimeMillis(); //time for Loop Control
     private long startTime = System.currentTimeMillis(); //initial time for FPS console logging
-    private long timeFrame = 1000 / 30;//FRAME_RATE; //time in milliseconds for one loop;
+    private long timeFrame = 1000 / 60;//FRAME_RATE; //time in milliseconds for one loop;
     private long timeCounterMs = 0; //milliseconds counter
     private int FPS = 0;
     private int frame = 0;

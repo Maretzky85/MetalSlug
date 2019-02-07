@@ -5,13 +5,17 @@ import com.sikoramarek.common.PlayerAction;
 import com.sikoramarek.common.SharedResources;
 import javafx.scene.input.KeyCode;
 
+import java.util.ArrayList;
+
 public class CharacterModel {
+
+    public ArrayList<Bullet> bullets = new ArrayList<>();
 
     private int GROUND_LEVEL = 160;
 
     private double MAX_VELOCITY = 30;
 
-    private float VELOCITY = 0;
+    private float X_VELOCITY = 0;
     private float Y_VELOCITY = 0;
 
     public float x_pos;
@@ -34,30 +38,45 @@ public class CharacterModel {
         this.y_pos = y_pos;
     }
 
+    public void fireWeapon(){
+        bullets.add(new Bullet(x_pos+20+(orientation*20), y_pos+20, 60*orientation));
+    }
+
     public void update() {
         last_x_pos = x_pos;
 
+        for (Bullet bullet : bullets
+                ) {
+            bullet.update();
+        }
+
+
+        if(SharedResources.Keyboard.contains(KeyCode.SPACE)){
+            fireWeapon();
+        }
+
         if (SharedResources.Keyboard.contains(KeyCode.D)){
             orientation = 1;
-            if (VELOCITY < MAX_VELOCITY){
-                VELOCITY += 1;
+            if (X_VELOCITY < MAX_VELOCITY){
+                X_VELOCITY += 2;
             }
-            x_pos = x_pos + VELOCITY * SharedResources.DT;
+            x_pos = x_pos + X_VELOCITY * SharedResources.DT;
         }else
         if (SharedResources.Keyboard.contains(KeyCode.A)){
             orientation = -1;
-            if (VELOCITY < MAX_VELOCITY){
-                VELOCITY += 1;
+            if (X_VELOCITY < MAX_VELOCITY){
+                X_VELOCITY += 2;
             }
-            x_pos = x_pos - VELOCITY * SharedResources.DT;
-        }else{VELOCITY = 0;}
+            x_pos = x_pos - X_VELOCITY * SharedResources.DT;
+        }else{
+            X_VELOCITY = 0;}
 
         if ( y_pos < GROUND_LEVEL ){
             Y_VELOCITY -= 5;
         }else {
             Y_VELOCITY = 0;
             if (SharedResources.Keyboard.contains(KeyCode.W)){
-                Y_VELOCITY += 30;
+                Y_VELOCITY += 35;
             }
         }
 
