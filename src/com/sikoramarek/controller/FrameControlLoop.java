@@ -46,7 +46,7 @@ public class FrameControlLoop extends Thread {
 
             if (timeCounterMs >= timeFrame) {
 //                if (!isPause) {
-                    SharedResources.DT = System.currentTimeMillis() - lastdeltatime;
+                    SharedResources.DT = (float)(System.currentTimeMillis() - lastdeltatime)/100;
                     lastdeltatime = System.currentTimeMillis();
                     updater.run();
 //                }

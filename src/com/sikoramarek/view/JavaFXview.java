@@ -1,11 +1,13 @@
 package com.sikoramarek.view;
 
+import com.sikoramarek.common.SharedResources;
 import com.sikoramarek.controller.Controller;
 import com.sikoramarek.model.CharacterModel;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
@@ -38,12 +40,22 @@ public class JavaFXview {
     }
 
     private void attachKeyboardHandler(){
-        primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (key) -> inputHandler.handleInput(key));
+        primaryStage.addEventHandler(KeyEvent.KEY_PRESSED, (key) ->
+        {
+            if ( !SharedResources.Keyboard.contains(key.getCode()) ) {
+                SharedResources.Keyboard.add(key.getCode());
+            }
+        }
+        );
+
+        primaryStage.addEventHandler(KeyEvent.KEY_RELEASED, (key) -> {
+            if ( SharedResources.Keyboard.contains(key.getCode()) ) {
+                SharedResources.Keyboard.remove(key.getCode());
+            }
+        });
+
     }
 
-    public void attachObserver(Controller controller){
-        inputHandler.addObserver(controller);
-    }
 
     public void update() {
         player1.update();
